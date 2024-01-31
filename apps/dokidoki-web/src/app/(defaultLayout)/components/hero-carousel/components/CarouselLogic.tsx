@@ -1,37 +1,49 @@
 'use client'
+import React, { Children, useCallback, useState } from 'react'
+import CarouselView from './CarouselView'
+import { Slide } from '@/types/carousel.types'
+import Image from 'next/image'
+import CarouselSlide from './CarouselSlide'
 
-import { Children, useCallback, useState } from 'react'
+interface CarouselLogicProps {
+    slides: Slide[]
+}
 
-const CarouselLogic = ({ children }: { children: React.ReactNode }) => {
+const CarouselLogic: React.FC<CarouselLogicProps> = ({ slides }) => {
     const [currentIndex, setCurrentIndex] = useState<number>(0)
 
     const updateIndex = useCallback(
         (newIndex: number) => {
+            const slidesCount = slides.length
+
             if (newIndex < 0) {
-                newIndex = Children.count(children) - 1
-            } else if (newIndex >= Children.count(children)) {
+                newIndex = slidesCount - 1
+            } else if (newIndex >= slidesCount) {
                 newIndex = 0
             }
 
             setCurrentIndex(newIndex)
         },
-        [children]
+        [slides]
     )
 
-    console.log(currentIndex)
-
     return (
-        <div>
-            <div className='flex gap-6'>
-                <button onClick={() => updateIndex(currentIndex - 1)}>
-                    Back
-                </button>
-                <button onClick={() => updateIndex(currentIndex + 1)}>
-                    Forward
-                </button>
-            </div>
-            {children}
-        </div>
+        <CarouselView currentIndex={currentIndex} updateIndex={updateIndex}>
+            {slides.map((item, index) => (
+                <CarouselSlide
+                    key={item.id}
+                    currentIndex={currentIndex}
+                    index={index}
+                >
+                    <Image
+                        src={item.src}
+                        alt={item.title}
+                        title={item.title}
+                        priority
+                    />
+                </CarouselSlide>
+            ))}
+        </CarouselView>
     )
 }
 export default CarouselLogic
