@@ -43,9 +43,6 @@ module.exports = {
                     DEFAULT: 'var(--span)',
                 },
             },
-            animation: {
-                progress: 'progress 10s linear',
-            },
             keyframes: {
                 progress: {
                     '0%': {
@@ -57,6 +54,9 @@ module.exports = {
                         transform: 'translateX(0)',
                     },
                 },
+            },
+            animation: {
+                progress: 'progress 10s linear',
             },
             backgroundImage: {
                 'hero-carousel':
