@@ -13,12 +13,15 @@ module.exports = {
     prefix: '',
     theme: {
         container: {
-            center: true,
-            padding: '2rem',
-            screens: {
-                '2xl': '1400px',
+            padding: {
+                DEFAULT: '1rem',
+                sm: '2rem',
+                lg: '3rem',
+                xl: '4rem',
+                '2xl': '5rem',
             },
         },
+
         extend: {
             fontFamily: {
                 sans: ['var(--font-rubik)', ...fontFamily.sans],
@@ -54,6 +57,10 @@ module.exports = {
                     '0%': { width: '0%' },
                     '100%': { width: '100%' },
                 },
+            },
+            backgroundImage: {
+                'hero-carousel':
+                    'linear-gradient(to bottom,#0000 min(40vh,50%),#000 100%),linear-gradient(to right,#000c 0,#0009 30%,#0000 70%)',
             },
         },
     },

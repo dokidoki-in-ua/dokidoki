@@ -11,13 +11,12 @@ const CarouselView: React.FC<CarouselViewProps> = ({
     currentIndex,
     updateIndex,
 }) => {
-
     return (
-        <div>
-            <div className='grid grid-cols-1 grid-rows-1 [grid-template-areas:"viewbox"]'>
+        <div className='__hero_carousel'>
+            <div className='relative grid [grid-template-areas:"viewbox"]'>
                 {children}
             </div>
-            <div className='flex gap-6'>
+            <div className='absolute bottom-0 right-0 flex gap-6 z-40'>
                 <button onClick={() => updateIndex(currentIndex - 1)}>
                     Backward
                 </button>

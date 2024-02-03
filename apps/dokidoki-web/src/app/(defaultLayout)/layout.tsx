@@ -5,7 +5,9 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <div className='flex h-full min-h-full flex-col'>
             <Header />
-            <main className='page-content pt-[60px]'>{children}</main>
+            <main className='page-content flex flex-col pt-[60px]'>
+                {children}
+            </main>
         </div>
     )
 }

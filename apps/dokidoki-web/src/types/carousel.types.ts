@@ -4,4 +4,6 @@ export interface Slide {
     id: number
     src: string | StaticImageData
     title: string
+    synopsis: string
+    logo: string | StaticImageData
 }

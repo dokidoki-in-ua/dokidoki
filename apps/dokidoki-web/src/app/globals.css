@@ -38,7 +38,7 @@
         @apply h-fit w-fit fill-inherit stroke-inherit;
     }
     img {
-        @apply select-none;
+        @apply select-none object-contain w-full h-full;
     }
 
 }

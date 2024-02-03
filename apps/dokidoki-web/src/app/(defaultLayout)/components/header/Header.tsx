@@ -8,7 +8,7 @@ import { SlMenu } from 'react-icons/sl'
 
 const Header = () => {
     return (
-        <div className='fixed z-10 flex h-[60px] w-full justify-center bg-primary '>
+        <div className='fixed z-50 flex h-[60px] w-full justify-center bg-primary '>
             <div className='flex w-full justify-between sm:w-10/12 sm:px-[20px]'>
                 <div className='flex h-full'>
                     <Button className='flex h-full cursor-pointer items-center rounded-none fill-font px-2 text-[16px] font-normal duration-200 hover:bg-primary-active hover:fill-font-hover hover:text-font-hover sm:hidden'>

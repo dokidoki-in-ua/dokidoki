@@ -34,14 +34,8 @@ const CarouselLogic: React.FC<CarouselLogicProps> = ({ slides }) => {
                     key={item.id}
                     currentIndex={currentIndex}
                     index={index}
-                >
-                    <Image
-                        src={item.src}
-                        alt={item.title}
-                        title={item.title}
-                        priority
-                    />
-                </CarouselSlide>
+                    slide={item}
+                />
             ))}
         </CarouselView>
     )
