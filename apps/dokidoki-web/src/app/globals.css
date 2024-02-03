@@ -20,11 +20,12 @@
         --canvas: #1e2128;
 
         --span: #a0a0a0;
-
     }
 
-    .dark {
+    .content-padding {
+        @apply px-[1rem] sm:px-[2rem] lg:px-[3rem] xl:px-[4rem] 2xl:px-[5rem]
     }
+    
 }
 
 @layer base {
@@ -38,7 +39,7 @@
         @apply h-fit w-fit fill-inherit stroke-inherit;
     }
     img {
-        @apply select-none object-contain w-full h-full;
+        @apply h-full w-full select-none object-cover;
     }
 
 }

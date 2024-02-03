@@ -6,4 +6,5 @@ export interface Slide {
     title: string
     synopsis: string
     logo: string | StaticImageData
+    genres: string[]
 }

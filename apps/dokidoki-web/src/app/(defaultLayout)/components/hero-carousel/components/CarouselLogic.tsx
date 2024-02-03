@@ -28,7 +28,11 @@ const CarouselLogic: React.FC<CarouselLogicProps> = ({ slides }) => {
     )
 
     return (
-        <CarouselView currentIndex={currentIndex} updateIndex={updateIndex}>
+        <CarouselView
+            currentIndex={currentIndex}
+            updateIndex={updateIndex}
+            slides={slides}
+        >
             {slides.map((item, index) => (
                 <CarouselSlide
                     key={item.id}

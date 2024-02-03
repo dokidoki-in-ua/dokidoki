@@ -13,13 +13,7 @@ module.exports = {
     prefix: '',
     theme: {
         container: {
-            padding: {
-                DEFAULT: '1rem',
-                sm: '2rem',
-                lg: '3rem',
-                xl: '4rem',
-                '2xl': '5rem',
-            },
+            //
         },
 
         extend: {
@@ -50,12 +44,18 @@ module.exports = {
                 },
             },
             animation: {
-                progress: 'progress 8s linear forwards',
+                progress: 'progress 10s linear',
             },
             keyframes: {
                 progress: {
-                    '0%': { width: '0%' },
-                    '100%': { width: '100%' },
+                    '0%': {
+                        opacity: '1',
+                        transform: 'translateX(-100%)',
+                    },
+                    '100%': {
+                        opacity: '1',
+                        transform: 'translateX(0)',
+                    },
                 },
             },
             backgroundImage: {
