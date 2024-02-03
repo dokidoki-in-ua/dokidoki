@@ -1,13 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConfigModule } from '@nestjs/config';
+import { DatabasesModule } from './databases/databases.module';
+import { ConfigsModule } from './configs/configs.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({
-    isGlobal: true,
-    cache: true,
-  })],
+  imports: [DatabasesModule, ConfigsModule],
   controllers: [AppController],
   providers: [AppService],
 })
