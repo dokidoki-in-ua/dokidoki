@@ -2,8 +2,10 @@ import { StaticImageData } from 'next/image'
 
 export interface Slide {
     id: number
-    anime_id: number
-    content_path: string | StaticImageData
-    alias: string
+    src: string | StaticImageData
     title: string
+    synopsis: string
+    logo: string | StaticImageData
+    genres: string[]
+    mobile:  StaticImageData
 }

@@ -13,12 +13,9 @@ module.exports = {
     prefix: '',
     theme: {
         container: {
-            center: true,
-            padding: '2rem',
-            screens: {
-                '2xl': '1400px',
-            },
+            //
         },
+
         extend: {
             fontFamily: {
                 sans: ['var(--font-rubik)', ...fontFamily.sans],
@@ -46,14 +43,24 @@ module.exports = {
                     DEFAULT: 'var(--span)',
                 },
             },
-            animation: {
-                progress: 'progress 8s linear forwards',
-            },
             keyframes: {
                 progress: {
-                    '0%': { width: '0%' },
-                    '100%': { width: '100%' },
+                    '0%': {
+                        opacity: '1',
+                        transform: 'translateX(-100%)',
+                    },
+                    '100%': {
+                        opacity: '1',
+                        transform: 'translateX(0)',
+                    },
                 },
+            },
+            animation: {
+                progress: 'progress 10s linear',
+            },
+            backgroundImage: {
+                'hero-carousel':
+                    'linear-gradient(to bottom,#0000 min(40vh,50%),#000 100%),linear-gradient(to right,#000c 0,#0009 30%,#0000 70%)',
             },
         },
     },
