@@ -20,10 +20,44 @@
         --canvas: #1e2128;
 
         --span: #a0a0a0;
+
+        --hero-cards-inline: 2;
+        --hero-cards-col-gap: .3rem
     }
 
-    .content-padding {
-        @apply px-[1rem] sm:px-[2rem] lg:px-[3rem] xl:px-[4rem] 2xl:px-[5rem]
+    @media (min-width: 30rem) {
+        :root {
+            --hero-cards-inline: 3;
+            --hero-cards-col-gap: .4rem
+        }
+    }
+    
+    @media (min-width: 48rem) {
+        :root {
+            --hero-cards-inline: 4;
+            --hero-cards-col-gap: .5rem
+        }
+    }
+    
+    @media (min-width: 84rem) {
+        :root {
+            --hero-cards-inline: 5;
+            --hero-cards-col-gap: .6rem
+        }
+    }
+    
+    @media (min-width: 100rem) {
+        :root {
+            --hero-cards-inline: 6;
+            --hero-cards-col-gap: .8rem
+        }
+    }
+    
+    @media (min-width: 140rem) {
+        :root {
+            --hero-cards-inline: 7;
+            --hero-cards-col-gap: .9rem
+        }
     }
     
 }
@@ -42,4 +76,12 @@
         @apply h-full w-full select-none object-cover;
     }
 
+    .content-padding {
+        @apply px-[1rem] sm:px-[2rem] lg:px-[3rem] xl:px-[4rem] 2xl:px-[5rem];
+    }
+
+    .padding-left {
+        @apply pl-[1rem] sm:pl-[2rem] lg:pl-[3rem] xl:pl-[4rem] 2xl:pl-[5rem];
+    }
 }
+

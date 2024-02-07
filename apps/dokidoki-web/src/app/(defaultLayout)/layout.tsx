@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/shadcn/button'
 import Header from './components/header/Header'
 
 const DefaultLayout = ({ children }: { children: React.ReactNode }) => {

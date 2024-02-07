@@ -1,5 +1,11 @@
+import CardsCarousel from './components/cards-carousel/CardsCarousel'
 import HeroCarousel from './components/hero-carousel/HeroCarousel'
 
 export default function Home() {
-    return <HeroCarousel />
+    return (
+        <section className='content grid grid-flow-row gap-y-24'>
+            <HeroCarousel />
+            <CardsCarousel />
+        </section>
+    )
 }
