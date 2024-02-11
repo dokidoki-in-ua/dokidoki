@@ -9,11 +9,7 @@ const CardsCarousel = () => {
                     <h1>Найкращі аніме</h1>
                 </div>
                 <div className='grid w-full [grid-template-areas:"viewbox"]'>
-                    <Track>
-                        {Array.from({ length: 10 }).map((_, index) => (
-                            <Card key={index} />
-                        ))}
-                    </Track>
+                    <Track />
                 </div>
             </div>
         </div>

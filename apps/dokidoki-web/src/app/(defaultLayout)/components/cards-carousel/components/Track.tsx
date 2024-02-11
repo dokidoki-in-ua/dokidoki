@@ -1,17 +1,24 @@
-import * as React from 'react'
+'use client'
+import { useRef } from 'react'
 import Arrows from './Arrows'
+import Card from './Card'
 
-interface TrackProps {
-    children: React.ReactNode
-}
+interface TrackProps {}
 
-const Track: React.FC<TrackProps> = ({ children }) => {
+const Track: React.FC<TrackProps> = () => {
+    const trackRef = useRef<HTMLDivElement>(null)
+
     return (
         <div className='content-padding relative [grid-area:viewbox] '>
-            <div className='carousel-margin content-padding  grid snap-mandatory auto-cols-[calc(100%/var(--hero-cards-inline))] grid-flow-col grid-rows-1 overflow-auto'>
-                {children}
+            <div
+                className='carousel-margin no-scrollbar content-padding grid snap-mandatory auto-cols-[calc(100%/var(--hero-cards-inline))] grid-flow-col grid-rows-1 overflow-auto'
+                ref={trackRef}
+            >
+                {Array.from({ length: 19 }).map((_, index) => (
+                    <Card key={index} trackRef={trackRef} />
+                ))}
             </div>
-            <Arrows />
+            <Arrows trackRef={trackRef} />
         </div>
     )
 }

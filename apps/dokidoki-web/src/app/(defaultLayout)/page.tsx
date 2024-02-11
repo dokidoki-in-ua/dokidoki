@@ -6,6 +6,9 @@ export default function Home() {
         <section className='content grid grid-flow-row gap-y-24'>
             <HeroCarousel />
             <CardsCarousel />
+            <CardsCarousel />
+            <CardsCarousel />
+            <CardsCarousel />
         </section>
     )
 }
