@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Arrows from './Arrows'
 
 interface TrackProps {
     children: React.ReactNode
@@ -6,13 +7,13 @@ interface TrackProps {
 
 const Track: React.FC<TrackProps> = ({ children }) => {
     return (
-        <div className='[grid-area:viewbox]'>
-            <div className='grid grid-flow-col auto-cols-[calc(100%/var(--hero-cards-inline))] grid-rows-1 snap-mandatory overflow-auto mx-[-80px] content-padding'>{children}</div>
+        <div className='content-padding relative [grid-area:viewbox] '>
+            <div className='carousel-margin content-padding  grid snap-mandatory auto-cols-[calc(100%/var(--hero-cards-inline))] grid-flow-col grid-rows-1 overflow-auto'>
+                {children}
+            </div>
+            <Arrows />
         </div>
     )
 }
 
 export default Track
-
-
-//[calc((var(--hero-cards-col-gap)/2)+max(0rem,calc(0.75rem-0.75rem/2))*-1)]

@@ -8,7 +8,7 @@ const card: { image: StaticImageData; title: string } = {
 
 const Card = () => {
     return (
-        <div className='p-[var(--hero-cards-col-gap)] w-full '>
+        <div className='p-[var(--hero-cards-col-gap)] w-full'>
             <div className=''>
                 <Image src={card.image} alt={card.title} className='w-full h-full aspect-video' />
             </div>

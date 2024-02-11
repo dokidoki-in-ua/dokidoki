@@ -22,44 +22,64 @@
         --span: #a0a0a0;
 
         --hero-cards-inline: 2;
-        --hero-cards-col-gap: .3rem
+        --hero-cards-col-gap: 0.2rem;
     }
 
     @media (min-width: 30rem) {
         :root {
             --hero-cards-inline: 3;
-            --hero-cards-col-gap: .4rem
         }
     }
-    
+
     @media (min-width: 48rem) {
         :root {
             --hero-cards-inline: 4;
-            --hero-cards-col-gap: .5rem
         }
     }
-    
+
     @media (min-width: 84rem) {
         :root {
             --hero-cards-inline: 5;
-            --hero-cards-col-gap: .6rem
         }
     }
-    
+
     @media (min-width: 100rem) {
         :root {
             --hero-cards-inline: 6;
-            --hero-cards-col-gap: .8rem
         }
     }
-    
+
     @media (min-width: 140rem) {
         :root {
             --hero-cards-inline: 7;
-            --hero-cards-col-gap: .9rem
         }
     }
-    
+}
+
+@media screen(sm) {
+    :root {
+        --content-inline-padding: 1rem;
+    }
+}
+@media screen(md) {
+    :root {
+        --content-inline-padding: 2rem;
+    }
+}
+@media screen(lg) {
+    :root {
+        --content-inline-padding: 3rem;
+    }
+}
+@media screen(xl) {
+    :root {
+        --content-inline-padding: 4rem;
+    }
+}
+@media screen(2xl) {
+    :root {
+        --content-inline-padding: 5rem;
+    }
 }
 
 @layer base {
@@ -80,8 +100,21 @@
         @apply px-[1rem] sm:px-[2rem] lg:px-[3rem] xl:px-[4rem] 2xl:px-[5rem];
     }
 
+    .carousel-margin {
+        @apply -mx-[1.2rem] sm:-mx-[2.2rem] lg:-mx-[3.2rem] xl:-mx-[4.2rem] 2xl:-mx-[5.2rem];
+    }
+
     .padding-left {
         @apply pl-[1rem] sm:pl-[2rem] lg:pl-[3rem] xl:pl-[4rem] 2xl:pl-[5rem];
     }
 }
 
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
