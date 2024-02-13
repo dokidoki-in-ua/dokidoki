@@ -1,4 +1,4 @@
-import { RefObject } from 'react'
+import { RefObject, useCallback, useEffect, useState } from 'react'
 import { MdArrowForwardIos, MdArrowBackIosNew } from 'react-icons/md'
 
 interface ArrowsProps {
@@ -6,47 +6,64 @@ interface ArrowsProps {
 }
 
 const Arrows: React.FC<ArrowsProps> = ({ trackRef }) => {
-    const handleClick = (way: string) => {
-        const track = trackRef.current
+    const [isActiveBack, setIsActiveBack] = useState<boolean>(false)
+    const [isActiveForward, setIsActiveForward] = useState<boolean>(false)
+    const track = trackRef.current
+
+    const handleScroll = useCallback(() => {
         if (!track) return
 
-        const { clientWidth, scrollLeft, style } = track
-        const { paddingLeft, paddingRight } = window.getComputedStyle(track)
+        setIsActiveBack(track.scrollLeft > 0)
+        setIsActiveForward(
+            track.scrollLeft < track.scrollWidth - track.clientWidth
+        )
+    }, [track])
 
-        const leftPadding = parseFloat(paddingLeft)
-        const rightPadding = parseFloat(paddingRight)
+    useEffect(() => {
+        if (!track) return
 
-        const paddingTotal = leftPadding + rightPadding
-        const contentWidth = clientWidth - paddingTotal
+        track.addEventListener('scroll', handleScroll)
+        handleScroll() // Initial check
 
-        const scrollIncrement = way === 'forward' ? contentWidth : -contentWidth
+        return () => {
+            track.removeEventListener('scroll', handleScroll)
+        }
+    }, [track, handleScroll])
 
-        const newScrollPosition = scrollLeft + scrollIncrement
+    const handleClick = (way: string) => {
+        if (!track) return
+
+        const { clientWidth } = track
+        const scrollIncrement = way === 'forward' ? clientWidth : -clientWidth
 
         track.scrollTo({
-            left: newScrollPosition,
+            left: track.scrollLeft + scrollIncrement,
             behavior: 'smooth',
         })
     }
 
     return (
         <div className='hidden md:block'>
-            <div className='absolute left-0 top-0 z-[1] flex h-full items-center'>
+            <div
+                className={`absolute left-0 top-0 z-[1] flex h-full items-center ${isActiveBack ? 'block' : 'hidden'}`}
+            >
                 <button
-                    className='h-full fill-span px-[calc((var(--content-inline-padding)-(1.5rem+var(--hero-cards-col-gap)))/2)] duration-200  hover:fill-font-hover'
+                    className='group h-full fill-span px-[calc((var(--content-inline-padding)-(1.5rem+var(--hero-cards-col-gap)))/2)] duration-200 hover:fill-font'
                     onClick={() => handleClick('')}
                 >
-                    <span className='via-34% absolute inset-0 -z-[0] bg-gradient-to-l from-transparent via-[#0000006c] to-[#0000008f] opacity-0 duration-200 hover:opacity-100'></span>
-                    <MdArrowBackIosNew size={24} />
+                    <MdArrowBackIosNew size={24} className='z-[1]' />
+                    <span className='via-34% absolute inset-0 -z-10 bg-gradient-to-l from-transparent via-[#000000d7] to-[#000000] opacity-50 duration-200 group-hover:opacity-80'></span>
                 </button>
             </div>
-            <div className='absolute right-0 top-0 z-[1] flex h-full items-center'>
+            <div
+                className={`absolute right-0 top-0 z-[1] flex h-full items-center ${isActiveForward ? 'block' : 'hidden'}`}
+            >
                 <button
-                    className='h-full fill-span px-[calc((var(--content-inline-padding)-(1.5rem+var(--hero-cards-col-gap)))/2)] duration-200 hover:fill-font-hover'
+                    className='group h-full fill-span px-[calc((var(--content-inline-padding)-(1.5rem+var(--hero-cards-col-gap)))/2)] duration-200 hover:fill-font'
                     onClick={() => handleClick('forward')}
                 >
-                    <span className='via-34% absolute inset-0 -z-[0] bg-gradient-to-r from-transparent via-[#0000006c] to-[#0000008f] opacity-0 duration-200 hover:opacity-100'></span>
-                    <MdArrowForwardIos size={24} />
+                    <MdArrowForwardIos size={24} className='z-[1]' />
+                    <span className='via-34% absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-[#000000d7] to-[#000000] opacity-50 duration-200 group-hover:opacity-80'></span>
                 </button>
             </div>
         </div>

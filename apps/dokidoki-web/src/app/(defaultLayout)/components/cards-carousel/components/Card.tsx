@@ -1,4 +1,5 @@
 import preview from '@/_dev/imgs/solo-preview.webp'
+
 import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
 import { RefObject, useEffect, useRef, useState } from 'react'
@@ -13,6 +14,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ trackRef }) => {
+    const [hoverIsActive, setHoverIsActive] = useState<boolean>(false)
     const cardRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -20,9 +22,9 @@ const Card: React.FC<CardProps> = ({ trackRef }) => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    cardRefCurrent?.setAttribute('aria-hidden', 'false')
+                    cardRefCurrent?.removeAttribute('inert')
                 } else {
-                    cardRefCurrent?.setAttribute('aria-hidden', 'true')
+                    cardRefCurrent?.setAttribute('inert', '')
                 }
             },
             {
@@ -41,20 +43,19 @@ const Card: React.FC<CardProps> = ({ trackRef }) => {
             }
         }
     }, [trackRef])
-    console.log(cardRef)
 
     return (
         <div
-            className='hover:my-2- hover:scale-110- inert:opacity-50 w-full p-[var(--hero-cards-col-gap)] duration-200 aria-hidden:pointer-events-none aria-hidden:opacity-50'
+            className='relative w-full snap-start p-[var(--hero-cards-col-gap)] duration-200 aria-hidden:pointer-events-none aria-hidden:opacity-50'
             ref={cardRef}
         >
-            <Link href={'/profile'} className=''>
+            <div className=''>
                 <Image
                     src={card.image}
                     alt={card.title}
-                    className='aspect-video h-full w-full'
+                    className='aspect-video h-full w-full duration-200'
                 />
-            </Link>
+            </div>
         </div>
     )
 }

@@ -107,6 +107,10 @@
     .padding-left {
         @apply pl-[1rem] sm:pl-[2rem] lg:pl-[3rem] xl:pl-[4rem] 2xl:pl-[5rem];
     }
+
+    .cards-carousel-scroll-padding {
+        @apply scroll-p-[1rem] sm:scroll-p-[2rem] lg:scroll-p-[3rem] xl:scroll-p-[4rem] 2xl:scroll-p-[5rem];
+    }
 }
 
 @layer utilities {
