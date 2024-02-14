@@ -17,7 +17,7 @@ const CarouselNavigation: React.FC<CarouselNavigationProps> = ({
                 {slides.map((_, index) => (
                     <button
                         key={index}
-                        className={`relative h-2 overflow-hidden rounded-lg bg-zinc-700  duration-200 hover:bg-secondary-hover ${index === currentIndex ? 'w-12' : 'w-6'} `}
+                        className={`relative h-2 overflow-hidden rounded-lg bg-zinc-700  duration-200 md:hover:bg-secondary-hover ${index === currentIndex ? 'w-12' : 'w-6'} `}
                         onClick={() => updateIndex(index)}
                     >
                         <span
