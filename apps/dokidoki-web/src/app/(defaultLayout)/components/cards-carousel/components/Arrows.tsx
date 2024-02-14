@@ -8,18 +8,19 @@ interface ArrowsProps {
 const Arrows: React.FC<ArrowsProps> = ({ trackRef }) => {
     const [isActiveBack, setIsActiveBack] = useState<boolean>(false)
     const [isActiveForward, setIsActiveForward] = useState<boolean>(false)
-    const track = trackRef.current
 
     const handleScroll = useCallback(() => {
+        const track = trackRef.current
         if (!track) return
 
         setIsActiveBack(track.scrollLeft > 0)
         setIsActiveForward(
             track.scrollLeft < track.scrollWidth - track.clientWidth
         )
-    }, [track])
+    }, [trackRef])
 
     useEffect(() => {
+        const track = trackRef.current
         if (!track) return
 
         track.addEventListener('scroll', handleScroll)
@@ -28,9 +29,10 @@ const Arrows: React.FC<ArrowsProps> = ({ trackRef }) => {
         return () => {
             track.removeEventListener('scroll', handleScroll)
         }
-    }, [track, handleScroll])
+    }, [trackRef, handleScroll])
 
     const handleClick = (way: string) => {
+        const track = trackRef.current
         if (!track) return
 
         const { clientWidth } = track

@@ -2,10 +2,13 @@
 import { useRef } from 'react'
 import Arrows from './Arrows'
 import Card from './Card'
+import { Content } from '@/types/cards.types'
 
-interface TrackProps {}
+interface TrackProps {
+    content: Content[]
+}
 
-const Track: React.FC<TrackProps> = () => {
+const Track: React.FC<TrackProps> = ({ content }) => {
     const trackRef = useRef<HTMLDivElement>(null)
 
     return (
@@ -14,8 +17,8 @@ const Track: React.FC<TrackProps> = () => {
                 className='carousel-margin no-scrollbar content-padding cards-carousel-scroll-padding grid snap-x auto-cols-[calc(100%/var(--hero-cards-inline))] grid-flow-col grid-rows-1 overflow-auto'
                 ref={trackRef}
             >
-                {Array.from({ length: 19 }).map((_, index) => (
-                    <Card key={index} trackRef={trackRef} />
+                {content.map((item, index) => (
+                    <Card key={item.id} cardData={item} trackRef={trackRef} />
                 ))}
             </div>
             <Arrows trackRef={trackRef} />

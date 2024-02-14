@@ -9,9 +9,9 @@ import { SlMenu } from 'react-icons/sl'
 const Header = () => {
     return (
         <div className='fixed z-50 flex h-[60px] w-full justify-center bg-primary '>
-            <div className='flex w-full justify-between md:w-10/12 md:px-[20px]'>
+            <div className='content-padding flex w-full justify-between max-sm:p-0'>
                 <div className='flex h-full'>
-                    <Button className='flex h-full cursor-pointer items-center rounded-none fill-font px-3 text-[16px] font-normal duration-200 hover:bg-primary-active hover:fill-font-hover hover:text-font-hover md:hidden'>
+                    <Button className='flex h-full cursor-pointer items-center rounded-none fill-font px-4 text-[16px] font-normal duration-200 hover:bg-primary-active hover:fill-font-hover hover:text-font-hover md:hidden'>
                         <SlMenu size={22} />
                     </Button>
                     <Link
@@ -44,14 +44,21 @@ const Header = () => {
                 </div>
                 <div className='flex h-full'>
                     {/* there will be a separate Search component */}
-                    <button className='flex items-center stroke-font px-4 duration-200  hover:bg-primary-active hover:fill-white hover:stroke-font-hover'>
+                    <button
+                        className='flex items-center stroke-font px-4 duration-200  hover:bg-primary-active hover:fill-white hover:stroke-font-hover'
+                        title='Пошук'
+                    >
                         <GrSearch size={22} />
                     </button>
                     {/* ===== */}
                     {/* there will be a separate User Menu component */}
-                    <button className='hover:stroke-red flex items-center fill-transparent stroke-font px-4 duration-200 hover:bg-primary-active hover:stroke-font-hover'>
+                    <Link
+                        className='hover:stroke-red flex items-center fill-transparent stroke-font px-4 duration-200 hover:bg-primary-active hover:stroke-font-hover'
+                        href={'/login'}
+                        title='Вхід в акаунт'
+                    >
                         <LuUser2 size={24} />
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>
