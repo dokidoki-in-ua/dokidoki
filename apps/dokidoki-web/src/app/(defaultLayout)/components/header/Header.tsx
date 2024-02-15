@@ -9,7 +9,7 @@ import { SlMenu } from 'react-icons/sl'
 const Header = () => {
     return (
         <div className='fixed z-50 flex h-[60px] w-full justify-center bg-primary '>
-            <div className='content-padding flex w-full justify-between max-sm:p-0'>
+            <div className='content-padding flex w-full justify-between max-md:p-0'>
                 <div className='flex h-full'>
                     <Button className='flex h-full cursor-pointer items-center rounded-none fill-font px-4 text-[16px] font-normal duration-200 hover:bg-primary-active hover:fill-font-hover hover:text-font-hover md:hidden'>
                         <SlMenu size={22} />
