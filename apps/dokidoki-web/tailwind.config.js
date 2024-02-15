@@ -42,6 +42,9 @@ module.exports = {
                 span: {
                     DEFAULT: 'var(--span)',
                 },
+                shadow: {
+                    DEFAULT: 'var(--shadow)',
+                },
             },
             keyframes: {
                 progress: {
