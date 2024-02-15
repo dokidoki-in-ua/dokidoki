@@ -5,6 +5,7 @@ import { RiArrowDropDownFill } from 'react-icons/ri'
 import { GrSearch } from 'react-icons/gr'
 import { LuUser2 } from 'react-icons/lu'
 import { SlMenu } from 'react-icons/sl'
+import { LogoIcon } from '@/components/svg/LogoIcon'
 
 const Header = () => {
     return (
@@ -18,7 +19,8 @@ const Header = () => {
                         href={'/'}
                         className='flex items-center fill-secondary px-[10px] duration-200 hover:fill-white'
                     >
-                        <Logo className='w-[150px]' />
+                        <LogoIcon className='block w-[30px] sm:hidden ' />
+                        <Logo className='hidden w-[150px] sm:block' />
                     </Link>
 
                     <div className='hidden md:flex'>
