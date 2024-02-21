@@ -1,4 +1,4 @@
 const page = () => {
-    return <div>page</div>
+    return <div>register</div>
 }
 export default page
